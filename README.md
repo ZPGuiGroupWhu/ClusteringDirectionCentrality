@@ -88,7 +88,7 @@ For Linux
 	Recommended: 8 GB
 	For Polyspace, 4 GB per core is recommended
 	
-# How To Run The Test
+# How To Run The Code
 
 This section introduces how to use the provided MATLAB codes to run the tests, including 1) the comparison with four baselines, 2) the clustering of high-dimensional datasets using dimension reduction algorithms, 3) the noise elimination experiment, 4) the handling 3D datasets using projection method, and 5) the adaptive parameter setting experiment.
 
