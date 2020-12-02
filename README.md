@@ -12,6 +12,7 @@ MATLAB R2020b
 
 ---Hardware for MATLAB---
 For Windows
+
 	---Operating Systems---
 	Windows 10 (version 1803 or higher)
 	Windows 7 Service Pack 1
@@ -33,6 +34,7 @@ For Windows
 	For Polyspace, 4 GB per core is recommended
 
 For Mac
+
 	---Operating Systems---
 	macOS Big Sur (11)
 	macOS Catalina (10.15)
@@ -55,6 +57,7 @@ For Mac
 	For Polyspace, 4 GB per core is recommended
 
 For Linux
+
 	---Operating Systems---
 	Ubuntu 20.04 LTS
 	Ubuntu 18.04 LTS
