@@ -5,7 +5,7 @@ In this work, we propose a novel Clustering algorithm by measuring Direction Cen
 
 # Pseudocode
 
-![image](https://github.com/MaiEmily/map/blob/master/public/image/20190528145810708.png)
+![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/main/pics/pseudocode.png)
 
 
 # Implementation Environment
