@@ -88,4 +88,64 @@ For Linux
 	Recommended: 8 GB
 	For Polyspace, 4 GB per core is recommended
 	
-# Directory
+# How To Run The Test
+
+This section introduces how to use the provided MATLAB codes to run the tests, including 1) the comparison with four baselines, 2) the clustering of high-dimensional datasets using dimension reduction algorithms, 3) the noise elimination experiment, 4) the handling 3D datasets using projection method, and 5) the adaptive parameter setting experiment.
+
+--- 1) the comparison with four baselines (i.e., K-means, CDP, DBSCAN, LGC) ---
+Open file TestCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., synthetic_test1, synthetic_test2, synthetic_test3, synthetic_test4, scRNAseq_pancancer_tsne, scRNAseq_pancancer_umap, corpus_ELSDSR_umap, corpus_MSLT_umap.
+
+	X = textread('Demo_Datasets/synthetic_test1.txt');
+	data = X(:,1:2);
+	ref = X(:,3);
+	addpath CDC
+	cluster = DirectionClusterKNN(10,0.1,data);
+
+--- 2) the clustering of high-dimensional datasets using dimension reduction algorithms (PCA and t-SNE) ---
+Open file TestHDCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., UCI_iris.txt, UCI_seeds.txt, and UCI_wine.txt.
+
+	X = textread('Demo_Datasets/UCI_iris.txt');
+	init_data = X(:,1:4);
+	ref = X(:,5);
+
+	% Perform PCA to reduce the dimensions
+	[coeff,score,latent,tsquare] = pca(init_data);
+	X0 = bsxfun(@minus,init_data,mean(init_data,1));
+	data = X0*coeff(:,1:2);
+
+	% Perform t-SNE to reduce the dimensions
+	% data = tsne(init_data);
+
+	addpath CDC
+	cluster = DirectionClusterKNN(17,0.03,data); 
+
+--- 3) the noise elimination experiment ---
+Open file TestLOFCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., synthetic_test_noise_1.txt, synthetic_test_noise_2.txt, and synthetic_test_noise_3.txt.
+
+	X = textread('Demo_Datasets/synthetic_test_noise_1.txt');
+	data = X(:,1:2);
+	ref = X(:,3);
+	addpath LOF-CDC
+	cluster = LOF(data,20,0.19,0.06);
+
+--- 4) the handling 3D datasets using projection method ---
+Open file TestProjCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., synthetic_test_3d_1.txt, synthetic_test_3d_2.txt, and synthetic_test_3d_3.txt.
+
+	X = textread('Demo_Datasets/synthetic_test_3d_1.txt');
+	data = X(:,1:3);
+	ref = X(:,4);
+	addpath CDC
+	cluster = ProjCDC(20,0.26,data);  
+
+--- 5) the adaptive parameter setting experiment ---
+Open file TestAdaptCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. All the datasets for the comparison with four baselines can be used here.
+
+	X = textread('Demo_Datasets/synthetic_test2.txt');
+	data = X(:,1:2);
+	ref = X(:,3);
+	addpath CDC
+	cluster = CDCParaAdapt(data);
+
+# License
+
+This project is covered under the Apache 2.0 License.
