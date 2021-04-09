@@ -8,13 +8,9 @@ ref = X(:,3);
 % synthetic_test2: [20,0.1]
 % synthetic_test3: [20,0.1]
 % synthetic_test4: [30,0.2]
-% scRNAseq_pancancer_tsne: [37,0.09]
-% scRNAseq_pancancer_umap: [28,0.06]
-% corpus_ELSDSR_umap: [5,0.38]
-% corpus_MSLT_umap: [7,0.28]
 % ----Examples----
 addpath CDC
-cluster = DirectionClusterKNN(10,0.1,data);   
+cluster = CDC(10,0.1,data);   
 
 %% Perform k-means algorithm
 % cluster = kmeans(data,class_num,'Distance','sqEuclidean','Start','sample','Replicates',iterations);
@@ -45,4 +41,4 @@ cluster = DirectionClusterKNN(10,0.1,data);
 addpath ClusterPlot
 plotcluster(length(data),data,cluster);   
 addpath ClusterEvaluation
-[precision, recall, F1score, rand_index, ad_rand_index, jaccard] = ClusterEvaluation(cluster,ref); 
+[ Accuracy, NMI, ARI, Fscore, JI, RI] = ClustEval(ref, cluster);

@@ -7,20 +7,16 @@ function [cluster] = CDCParaAdapt(data,class,k_num)
 X = unique(data,'rows');
 n = length(X);
 
-if n>5&&n<34
-    temp_k = 5;
-elseif n>33&&n<301
-    temp_k = ceil(0.03*n)+4;
-elseif n>300&&n<2001
-    temp_k = ceil(0.01*n)+10;
-elseif n>2000
-    temp_k = ceil(4*log(n));
+if n < 1000
+    temp_k = 0.5*(ceil(n/20)+ceil(n/50));
+else
+    temp_k = 3*ceil(log2(n))+5;
 end
 
-if nargin < 2
+if nargin == 1
     class = 1;
     k_num = temp_k;
-elseif nargin < 3
+elseif nargin == 2
     k_num = temp_k;
 end
 
@@ -40,7 +36,7 @@ for i=1:s
 end
 vex_num = 2*n-edge_num-2*class;   %%% Compute the number of boundary points
 ave_thre = angle_var(vex_num);
-cluster = DirectionClusterKNN(k_num,ave_thre,data);    %%% Perform CDC
+cluster = CDC(k_num,ave_thre,data);    %%% Perform CDC
 end
   
   

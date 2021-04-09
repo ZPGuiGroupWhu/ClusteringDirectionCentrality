@@ -1,4 +1,4 @@
-function [  precision, recall, Fscore,rand_index,ad_rand_index, jaccard] = ClusterEvaluation( res,ref )
+function [  precision, recall, accuracy, Fscore,rand_index,ad_rand_index, jaccard] = ClusterEvaluation( ref, res )
 n = length(res);
 SS = 0; % same calss same clusters
 SD = 0; % same calss different clusters
@@ -17,31 +17,21 @@ for i=1:n
         end
     end
 end
- 
-C=Contingency(res,ref);   %form contingency matrix
-n=sum(sum(C));
-nis=sum(sum(C,2).^2);       %sum of squares of sums of rows
-njs=sum(sum(C,1).^2);       %sum of squares of sums of columns
- 
-t1=nchoosek(n,2);       %total number of pairs of entities
-t2=sum(sum(C.^2));  %sum over rows & columnns of nij^2
-t3=.5*(nis+njs);
- 
-%Expected index (for adjustment)
-nc=(n*(n^2+1)-(n+1)*nis-(n+1)*njs+2*(nis*njs)/n)/(2*(n-1));
- 
-A=t1+t2-t3;     %no. agreements
-D=-t2+t3;     %no. disagreements
- 
-if t1==nc
-   ad_rand_index=0;            %avoid division by zero; if k=1, define Rand = 0
-else
-   ad_rand_index=(A-nc)/(t1-nc);       %adjusted Rand - Hubert & Arabie 1985
-end
 
+ad_rand_index = 2*(SS*DD-DS*SD)/((2*(SS*DD-DS*SD))+(DS+SD)*(SS+SD+DS+DD));
 precision = SS/(SS+DS);
 recall = SS/(SS+SD);
 rand_index = (SS+DD)/(SS+SD+DS+DD);
 Fscore = 2*precision*recall/(precision+recall);
 jaccard = SS/(SS+SD+DS);
+
+p = unique(ref');
+c = unique(res');
+P_size = length(p);
+C_size = length(c);
+Pid = double(ones(P_size,1)*ref' == p'*ones(1,n) );
+Cid = double(ones(C_size,1)*res' == c'*ones(1,n) );
+CP = Cid*Pid';
+[~,cost] = munkres(-CP);
+accuracy = -cost/n;
 end

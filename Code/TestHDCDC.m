@@ -22,10 +22,10 @@ data = X0*coeff(:,1:2);
 % wine: [21,0.02]
 % ----Examples----
 addpath CDC
-cluster = DirectionClusterKNN(17,0.03,data); 
+cluster = CDC(17,0.03,data); 
 
 %% Plot and evaluatethe the clustering results with the six validity indexes
 addpath ClusterPlot
 plotcluster(length(data),data,cluster);   
 addpath ClusterEvaluation
-[precision, recall, F1score, rand_index, ad_rand_index, jaccard] = ClusterEvaluation(cluster,ref); 
+[ Accuracy, NMI, ARI, Fscore, JI, RI] = ClustEval(ref, cluster); 

@@ -1,6 +1,6 @@
-function [ cluster ] = DirectionClusterKNN( k_num,edge_thre,X )
+function [ cluster ] = CDC( k_num,T,X )
 % k_num: the k of KNN
-% edge_thre: the threshold of DCM
+% T: the threshold of DCM
 % X: the two-dimensional data
 % cluster: the cluster labels
 
@@ -57,7 +57,7 @@ angle_var = angle_var/((k_num-1)*4*pi^2/k_num^2);
 %% Divide the points into boundary and internal points based on DCM
 ind = zeros(n,1);
 for i=1:n
-    if(angle_var(i)<edge_thre)
+    if(angle_var(i)<T)
         ind(i) = 1;
     end
 end

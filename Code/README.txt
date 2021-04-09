@@ -95,16 +95,18 @@ For Linux
 |
 |！！    TestHDCDC.m
 |
-|！！    TestLOFCDC.m
+|！！    TestCDCNoise.m
 |
-|！！    TestProjCDC.m
+|！！    TestVDD.m
 |
 |！！    CDC
+|           |！！    CDC.m
 |           |！！    CDCParaAdapt.m
 |           |！！    DCCalculation.m
-|           |！！    DirectionClusterKNN.m
 |           |！！    GetNearEdge.m
-|           |！！    ProjCDC.m
+|           |！！    OPP.m
+|           |！！    SDC.m
+|           |！！    VDD.m
 |
 |！！    CDP
 |           |！！    CDP.m
@@ -120,7 +122,7 @@ For Linux
 |！！    LGC
 |           |！！    LGC.m
 |
-|！！    LOF-CDC
+|！！    CDC-Noise
 |           |！！    dataSet.m
 |           |！！    DirectionClusterKNN.m
 |           |！！    distance.m
@@ -137,9 +139,14 @@ For Linux
 |           |！！    reach_distance.m
 |           |！！    rnbs.m
 |           |！！    rNN.m
+|           |！！    IDM.m
+|           |！！    RKNN.m
 |
 |！！    ClusterEvaluation
 |           |！！    ClusterEvaluation.m
+|           |！！    ClustEval.m
+|           |！！    GetNMI.m
+|           |！！    munkres.m
 |
 |！！    ClusterPlot
 |           |！！    plotcluster.m
@@ -159,10 +166,6 @@ For Linux
 |           |！！    UCI_iris.txt
 |           |！！    UCI_seeds.txt
 |           |！！    UCI_wine.txt
-|           |！！    scRNAseq_pancancer_tsne.txt
-|           |！！    scRNAseq_pancancer_umap.txt
-|           |！！    corpus_ELSDSR_umap.txt
-|           |！！    corpus_MSLT_umap.txt
 
 4. Demo Datasets
 
@@ -197,16 +200,10 @@ feature1   feature2   feature3	feature4   label
 4.9	3.0	1.4	0.2	1
 4.7	3.2	1.3	0.2	1
 
----scRNAseq_pancancer_tsne, scRNAseq_pancancer_umap, corpus_ELSDSR_umap, corpus_MSLT_umap---
-Examples:
-tsne1   	tsne2   	label
--9.267 	-1.012 	1 
-3.050 	25.390 	2 
--35.359 	-25.068 	1
 
 5. How To Run The Test
 
-This section introduces how to use the provided MATLAB codes to run the tests, including 1) the comparison with four baselines, 2) the clustering of high-dimensional datasets using dimension reduction algorithms, 3) the noise elimination experiment, 4) the handling 3D datasets using projection method, and 5) the adaptive parameter setting experiment.
+This section introduces how to use the provided MATLAB codes to run the tests, including 1) the comparison with four baselines, 2) the clustering of high-dimensional datasets using dimension reduction algorithms, 3) the noise elimination experiment, 4) handling HD datasets using VDD, SDC, OPP methods, and 5) the adaptive parameter setting experiment.
 
 --- 1) the comparison with four baselines (i.e., K-means, CDP, DBSCAN, LGC) ---
 Open file TestCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., synthetic_test1, synthetic_test2, synthetic_test3, synthetic_test4, scRNAseq_pancancer_tsne, scRNAseq_pancancer_umap, corpus_ELSDSR_umap, corpus_MSLT_umap.
@@ -215,7 +212,7 @@ Open file TestCDC.m and run the following code, the exemplary datasets and the p
 	data = X(:,1:2);
 	ref = X(:,3);
 	addpath CDC
-	cluster = DirectionClusterKNN(10,0.1,data);
+	cluster = CDC(10,0.1,data);
 
 --- 2) the clustering of high-dimensional datasets using dimension reduction algorithms (PCA and t-SNE) ---
 Open file TestHDCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., UCI_iris.txt, UCI_seeds.txt, and UCI_wine.txt.
@@ -233,7 +230,7 @@ Open file TestHDCDC.m and run the following code, the exemplary datasets and the
 	% data = tsne(init_data);
 
 	addpath CDC
-	cluster = DirectionClusterKNN(17,0.03,data); 
+	cluster = CDC(17,0.03,data); 
 
 --- 3) the noise elimination experiment ---
 Open file TestLOFCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., synthetic_test_noise_1.txt, synthetic_test_noise_2.txt, and synthetic_test_noise_3.txt.
@@ -241,7 +238,7 @@ Open file TestLOFCDC.m and run the following code, the exemplary datasets and th
 	X = textread('Demo_Datasets/synthetic_test_noise_1.txt');
 	data = X(:,1:2);
 	ref = X(:,3);
-	addpath LOF-CDC
+	addpath CDC-Noise
 	cluster = LOF(data,20,0.19,0.06);
 
 --- 4) the handling 3D datasets using projection method ---
@@ -251,7 +248,7 @@ Open file TestProjCDC.m and run the following code, the exemplary datasets and t
 	data = X(:,1:3);
 	ref = X(:,4);
 	addpath CDC
-	cluster = ProjCDC(20,0.26,data);  
+	cluster = OPP(20,0.26,data);  
 
 --- 5) the adaptive parameter setting experiment ---
 Open file TestAdaptCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. All the datasets for the comparison with four baselines can be used here.
