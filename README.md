@@ -5,7 +5,7 @@ In this work, we propose a novel Clustering algorithm by measuring Direction Cen
 
 # Pseudocode
 
-![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/main/pics/pseudocode.png)
+![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/main/pics/pseudocode.jpg)
 
 
 # Implementation Environment
@@ -104,7 +104,7 @@ Open file TestCDC.m and run the following code, the exemplary datasets and the p
 	data = X(:,1:2);
 	ref = X(:,3);
 	addpath CDC
-	cluster = DirectionClusterKNN(10,0.1,data);
+	cluster = CDC(10,0.1,data);
 
 --- 2) the clustering of high-dimensional datasets using dimension reduction algorithms (PCA and t-SNE) ---
 Open file TestHDCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., UCI_iris.txt, UCI_seeds.txt, and UCI_wine.txt.
@@ -122,7 +122,7 @@ Open file TestHDCDC.m and run the following code, the exemplary datasets and the
 	% data = tsne(init_data);
 
 	addpath CDC
-	cluster = DirectionClusterKNN(17,0.03,data); 
+	cluster = CDC(17,0.03,data); 
 
 --- 3) the noise elimination experiment ---
 Open file TestLOFCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. The following datasets in the "Demo_Datasets" folders can be selected, i.e., synthetic_test_noise_1.txt, synthetic_test_noise_2.txt, and synthetic_test_noise_3.txt.
@@ -130,7 +130,7 @@ Open file TestLOFCDC.m and run the following code, the exemplary datasets and th
 	X = textread('Demo_Datasets/synthetic_test_noise_1.txt');
 	data = X(:,1:2);
 	ref = X(:,3);
-	addpath LOF-CDC
+	addpath CDC-Noise
 	cluster = LOF(data,20,0.19,0.06);
 
 --- 4) the handling 3D datasets using projection method ---
@@ -140,7 +140,7 @@ Open file TestProjCDC.m and run the following code, the exemplary datasets and t
 	data = X(:,1:3);
 	ref = X(:,4);
 	addpath CDC
-	cluster = ProjCDC(20,0.26,data);  
+	cluster = VDD(20,0.26,data);  
 
 --- 5) the adaptive parameter setting experiment ---
 Open file TestAdaptCDC.m and run the following code, the exemplary datasets and the parameters can be changed accordingly. All the datasets for the comparison with four baselines can be used here.
