@@ -29,7 +29,7 @@ BiocManager::install(c("BiocGenerics", "BiocSingular", "GenomeInfoDb", "GenomicR
 
 ---Sample Data---
 
-       Dataset              Format     Label
+ Dataset      Format  Label
 ‘Baron-Mouse’	‘csv’	‘1’
 ‘Muraro’	‘csv’	‘1’
 ‘Segerstolpe’	‘csv’	‘1’
