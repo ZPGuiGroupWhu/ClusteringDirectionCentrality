@@ -1,6 +1,6 @@
 ## Specify the filename, format and labels.
 ## --Arguments--
-##     filename: filename of the scRNA-seq dataset (We provide nine sample datasets in this application)
+##     filename: filename of the scRNA-seq dataset (We provide nine sample datasets in this application, please decompress them in the corresponding data folder before starting)
 ##     format: data format of the scRNA-seq dataset (We currently support two data formats, csv and 10X)
 ##     labels: whether the file contains the true label of cells ('1' is Yes, '0' is No)
 filename = 'Baron-Mouse'
@@ -38,7 +38,7 @@ ARI <- mclust::adjustedRandIndex(Idents(SeuratData), SeuratData@meta.data[["Clus
 ##        want to compare with other algorithm by traversing different settings in the parameter 
 ##        spaces, please just comments out this part of the code
 ## --Arguments--
-##     seurat_dim: dimension of reduction to use as input in Seurat (Default£ºseq(20, 50, 5)) 
+##     seurat_dim: dimension of reduction to use as input in Seurat (DefaultÂ£Âºseq(20, 50, 5)) 
 ##     seurat_resolution: resolution of Louvain algorithm in Seurat (Default: seq(0.1, 1, 0.1))
 ##     snnwalk_k: k of SNN graph in SNN-Walktrap (Default: seq(5, 30, 5))
 ##     snnlouv_k: k of SNN graph in SNN-Louvain (Default: seq(5, 30, 5))
