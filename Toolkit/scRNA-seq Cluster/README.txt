@@ -35,8 +35,8 @@ BiocManager::install(c("BiocGenerics", "BiocSingular", "GenomeInfoDb", "GenomicR
 ‘Segerstolpe’	‘csv’	‘1’
 ‘Xin’	        ‘csv’   ‘1’
 ‘pbmc3k’	‘10X’	‘1’
-‘WT_R1’	      ‘10X’ ‘1’
-‘WT_R2’	      ‘10X’ ‘1’
+‘WT_R1’	        ‘10X’ ‘1’
+‘WT_R2’	        ‘10X’ ‘1’
 ‘NdpKO_R1’	‘10X’	‘1’
 ‘NdpKO_R2’	‘10X’	‘1’
 
