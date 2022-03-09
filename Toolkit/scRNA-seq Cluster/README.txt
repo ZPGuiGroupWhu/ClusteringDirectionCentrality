@@ -33,7 +33,7 @@ BiocManager::install(c("BiocGenerics", "BiocSingular", "GenomeInfoDb", "GenomicR
 ‘Baron-Mouse’	‘csv’	‘1’
 ‘Muraro’	‘csv’	‘1’
 ‘Segerstolpe’	‘csv’	‘1’
-‘Xin’	      ‘csv’     ‘1’
+‘Xin’	        ‘csv’   ‘1’
 ‘pbmc3k’	‘10X’	‘1’
 ‘WT_R1’	‘10X’	‘1’
 ‘WT_R2’	‘10X’	‘1’
