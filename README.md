@@ -44,11 +44,13 @@ This section introduces how to use the provided MATLAB, Python and R codes to ru
 
 --- 1) MATLAB for 2D data ---
 
+```ruby
 	data = textread('DS1.txt');
 	[n,~] = size(data);
 	X = data(:,1:2);
 	ref = data(:,3);
 	% Read TXT file (this matlab code only for 2D data)
+```
 	
 	clus = CDC(X,30,1,0.1);
 	% Run CDC algorithm
