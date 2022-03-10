@@ -70,14 +70,6 @@ data = textread('SyntheticDatasets/DS1.txt');
 X = data(:,1:2);
 label = data(:,3);
 
-for i = 1 : length(X(1, :))
-    if ((max(X(:, i))-min(X(:, i)))>0)
-        X(:, i) = (X(:, i)-min(X(:, i)))/(max(X(:, i))-min(X(:, i)));
-    end
-end
-addpath UMAP/umap
-[X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
-
 cluster = CDC(X, k_num, ratio);
 
 addpath ClusterEvaluation
