@@ -62,7 +62,7 @@ ARI <- mclust::adjustedRandIndex(Idents(SeuratData), SeuratData@meta.data[["Clus
 This application is implemented using **MATLAB** and supports for cluster analysis on synthetic datasets. It contains two main files, ‘main1.m’ and ‘main2.m’. The first handles noise-free datasets, and the second integrates noise elimination methods, LOF, RKNN and IDM. We provide 17 synthetic 2D datasets with different shapes of clusters in this application, where DS10-DS13 contain noise points. These datasets can help users to understand the capabilities of the different clustering algorithms under representative 2D data distributions.
 
 ```ruby
-k_num = 30;
+k = 30;
 ratio = 0.7;
 
 data = textread('SyntheticDatasets/DS1.txt');
@@ -70,7 +70,7 @@ data = textread('SyntheticDatasets/DS1.txt');
 X = data(:,1:2);
 label = data(:,3);
 
-cluster = CDC(X, k_num, ratio);
+cluster = CDC(X, k, ratio);
 
 addpath ClusterEvaluation
 [Accuracy, NMI, ARI, Fscore, JI, RI] = ClustEval(label, cluster);
