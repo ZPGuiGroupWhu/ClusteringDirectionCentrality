@@ -33,7 +33,7 @@ Download the code and run the 'main' file in the root directory of each applicat
 
 > **scRNA-seq Cluster**
 
-First, specify the name and format of the scRNA-seq data and determine to read to label file or not. You must name and organize the files as the description of Data Format in [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Tutorial.pdf). ***To be noted, the sample datasets have been compressed into .zip files due the data size limit of GitHub. Before using them, please decompress them into the corresponding data folders named by the datasets.***
+This application is implemented using R and adopts [Seurat](https://satijalab.org/seurat) pipeline to preprocess the scRNA-seq dataset. Before running the code, you can specify the name and format of the scRNA-seq data and determine to read to label file or not. You must name and organize the files as the description of Data Format in [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Tutorial.pdf). ***To be noted, the sample datasets have been compressed into .zip files due the data size limit of GitHub. Before using them, please decompress them into the corresponding data folders named by the datasets.***
 
 ```ruby
 filename = 'Baron-Mouse
