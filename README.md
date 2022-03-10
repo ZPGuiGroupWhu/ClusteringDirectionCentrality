@@ -57,15 +57,45 @@ ARI <- mclust::adjustedRandIndex(Idents(SeuratData), SeuratData@meta.data[["Clus
 ```
 
 
-> **UCI Benchmark Test**
-
 > **Synthetic Data Analysis**
 
-> **CyTOF Cluster**
+This application supports for cluster analysis on synthetic datasets. It contains two main files, ‘main1.m’ and ‘main2.m’. The first handles noise-free datasets, and the second integrates noise elimination methods, LOF, RKNN and IDM. We provide 17 synthetic 2D datasets with different shapes of clusters in this application, where DS10-DS13 contain noise points. These datasets can help users to understand the capabilities of the different clustering algorithms under representative 2D data distributions.
 
-> **Speaker Recognition**
+```ruby
+k_num = 30;
+ratio = 0.7;
 
-> **Face Recognition**
+data = textread('SyntheticDatasets/DS1.txt');
+[n, m] = size(data);
+X = data(:,1:2);
+label = data(:,3);
+
+for i = 1 : length(X(1, :))
+    if ((max(X(:, i))-min(X(:, i)))>0)
+        X(:, i) = (X(:, i)-min(X(:, i)))/(max(X(:, i))-min(X(:, i)));
+    end
+end
+addpath UMAP/umap
+[X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
+
+%% If you input high-dimensional datasets, we recommend you to normalize and embed the data into low-dimensional space.
+% for i = 1 : length(X(1, :))
+%     if ((max(X(:, i))-min(X(:, i)))>0)
+%         X(:, i) = (X(:, i)-min(X(:, i)))/(max(X(:, i))-min(X(:, i)));
+%     end
+% end
+
+% addpath UMAP/umap
+% [X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
+
+cluster = CDC(X, k_num, ratio);
+
+addpath ClusterEvaluation
+[Accuracy, NMI, ARI, Fscore, JI, RI] = ClustEval(label, cluster);
+plotcluster(X, cluster);
+
+
+```
 
 
 # Schematic
