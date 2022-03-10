@@ -1,11 +1,11 @@
 ![image](https://img.shields.io/badge/R-4.1.0-green) ![image](https://img.shields.io/badge/MATLAB-R2020b-red)
 # Clustering by measuring local direction centrality for data with heterogeneous density and weak connectivity (CDC)
 
-# Introduction
 
 We propose a novel Clustering algorithm by measuring Direction Centrality (CDC) locally. It adopts a density-independent metric based on the distribution of K-nearest neighbors (KNNs) to distinguish between internal and boundary points. The boundary points generate enclosed cages to bind the connections of internal points, thereby preventing cross-cluster connections and separating weakly-connected clusters.
 
 This is a toolkit for CDC cluster analysis on various applications, including ‘scRNA-seq Cluster’, ‘UCI Benchmark Test’, ‘Synthetic Data Analysis’, ‘CyTOF Cluster’, ‘Speaker Recognition’, ‘Face Recognition’. They are implemented using MATLAB, R and Python languages.
+
 
 ![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/pics/index.jpg)
 
