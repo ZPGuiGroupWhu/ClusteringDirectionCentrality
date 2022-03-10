@@ -1,5 +1,6 @@
 ![image](https://img.shields.io/badge/R-4.1.0-green) ![image](https://img.shields.io/badge/MATLAB-R2020b-red)
 # Clustering by measuring local direction centrality for data with heterogeneous density and weak connectivity (CDC)
+![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/pics/index.jpg)
 
 # Introduction
 
