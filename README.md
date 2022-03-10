@@ -59,7 +59,7 @@ ARI <- mclust::adjustedRandIndex(Idents(SeuratData), SeuratData@meta.data[["Clus
 
 > **Synthetic Data Analysis**
 
-This application supports for cluster analysis on synthetic datasets. It contains two main files, ‘main1.m’ and ‘main2.m’. The first handles noise-free datasets, and the second integrates noise elimination methods, LOF, RKNN and IDM. We provide 17 synthetic 2D datasets with different shapes of clusters in this application, where DS10-DS13 contain noise points. These datasets can help users to understand the capabilities of the different clustering algorithms under representative 2D data distributions.
+This application is implemented using MATLAB and supports for cluster analysis on synthetic datasets. It contains two main files, ‘main1.m’ and ‘main2.m’. The first handles noise-free datasets, and the second integrates noise elimination methods, LOF, RKNN and IDM. We provide 17 synthetic 2D datasets with different shapes of clusters in this application, where DS10-DS13 contain noise points. These datasets can help users to understand the capabilities of the different clustering algorithms under representative 2D data distributions.
 
 ```ruby
 k_num = 30;
@@ -78,25 +78,24 @@ end
 addpath UMAP/umap
 [X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
 
-%% If you input high-dimensional datasets, we recommend you to normalize and embed the data into low-dimensional space.
-% for i = 1 : length(X(1, :))
-%     if ((max(X(:, i))-min(X(:, i)))>0)
-%         X(:, i) = (X(:, i)-min(X(:, i)))/(max(X(:, i))-min(X(:, i)));
-%     end
-% end
-
-% addpath UMAP/umap
-% [X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
-
 cluster = CDC(X, k_num, ratio);
 
 addpath ClusterEvaluation
 [Accuracy, NMI, ARI, Fscore, JI, RI] = ClustEval(label, cluster);
 plotcluster(X, cluster);
-
-
 ```
 
+CDC supports cluster analysis on high-dimensional data. But considering to make direction centrality of CDC more applicable, we recommend you to normalize and embed the data into low-dimensional space (2D~5D) before preforming CDC algorithm if you input high-dimensional data in this application.
+```ruby
+for i = 1 : length(X(1, :))
+    if ((max(X(:, i))-min(X(:, i)))>0)
+        X(:, i) = (X(:, i)-min(X(:, i)))/(max(X(:, i))-min(X(:, i)));
+    end
+end
+
+addpath UMAP/umap
+[X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
+```
 
 # Schematic
 
