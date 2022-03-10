@@ -10,7 +10,7 @@ This is a toolkit for CDC cluster analysis on various applications, including �
 ![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/pics/index.jpg)
 
 # Depends
-## R (≥4.1.0) RStudio (optional)
+## R (≥4.1.0)
 argparse (≥2.0.4), assertthat (≥0.2.1), BiocGenerics (≥0.40.0), BiocSingular (≥1.10.0), ClusterR (≥1.2.5), dotCall64 (≥1.0.1), fields (≥12.5), GenomeInfoDb (≥1.30.1), GenomicRanges (≥1.46.1), geometry (≥0.4.5), ggplot2 (≥3.3.5), grid (≥4.1.0), gtools (≥3.9.2), IRanges (≥2.28.0), MatrixGenerics (≥1.6.0), mclust (≥5.4.7), parallel (≥4.1.0), prodlim (≥2019.11.13), RcppHungarian (≥0.1), readr (≥1.4.0), reshape2 (≥1.4.4), S4Vectors (≥0.30.0), scran (≥1.22.1), scuttle (≥1.4.0), Seurat (≥4.0.5), SingleCellExperiment (≥1.16.0), spam (≥2.7.0), stats4 (≥4.1.0), SummarizedExperiment (≥1.24.0), uwot (≥0.1.10)
 
 Noted: all R packages can be installed from the [CRAN repository](https://cran.r-project.org/) or [Bioconductor](https://www.bioconductor.org/). You can also use the following R scripts to install them all.
@@ -31,6 +31,42 @@ BiocManager::install(c("BiocGenerics", "BiocSingular", "GenomeInfoDb", "GenomicR
 
 Download the code and run the 'main' file in the root directory of each application. Details can be found in the [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Tutorial.pdf).
 
+> **scRNA-seq Cluster**
+
+First, specify the name and format of the scRNA-seq data and determine to read to label file or not. You must name and organize the files as the description of Data Format in [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Tutorial.pdf). ***To be noted, the sample datasets have been compressed into .zip files due the data size limit of GitHub. Before using them, please decompress them into the corresponding data folders named by the datasets.***
+
+```ruby
+filename = 'Baron-Mouse
+format = 'csv'
+labels = '1'
+
+source('BuildSeuratObject.R')
+SeuratData <- BuildSeuratObject(filename, format, labels))
+
+source('SeuratPreprocess.R')
+UMAP_Dim = 2
+SeuratData <- SeuratPreprocess(SeuratData, filename, UMAP_Dim)
+
+source('CDC.R')
+k = 30
+ratio = 0.9
+Idents(SeuratData) <- CDC(SeuratData@reductions[["umap"]]@cell.embeddings, k, ratio)
+
+DimPlot(SeuratData, pt.size=1) + NoLegend()
+ARI <- mclust::adjustedRandIndex(Idents(SeuratData), SeuratData@meta.data[["Cluster"]])
+
+```
+
+
+> **UCI Benchmark Test**
+
+> **Synthetic Data Analysis**
+
+> **CyTOF Cluster**
+
+> **Speaker Recognition**
+
+> **Face Recognition**
 
 
 # Schematic
