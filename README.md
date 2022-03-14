@@ -43,8 +43,8 @@ source('BuildSeuratObject.R')
 SeuratData <- BuildSeuratObject(filename, format, labels))
 
 source('SeuratPreprocess.R')
-UMAP_Dim = 2
-SeuratData <- SeuratPreprocess(SeuratData, filename, UMAP_Dim)
+n_components = 2
+SeuratData <- SeuratPreprocess(SeuratData, filename, n_components)
 
 source('CDC.R')
 k = 30
