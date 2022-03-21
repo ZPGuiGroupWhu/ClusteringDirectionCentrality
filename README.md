@@ -6,6 +6,8 @@ We propose a novel Clustering algorithm by measuring Direction Centrality (CDC) 
 
 This is a toolkit for CDC cluster analysis on various applications, including ‘scRNA-seq Cluster’, ‘UCI Benchmark Test’, ‘Synthetic Data Analysis’, ‘CyTOF Cluster’, ‘Speaker Recognition’, ‘Face Recognition’. They are implemented using MATLAB, R and Python languages.
 
+Now, a parallel version of the algorithm CDC is also under developing based on High-Performance Computing (HPC) framework Apache Spark, which is nested under the folder  "HPC-version".
+
 ![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/pics/index1.jpg)
 
 # Depends
