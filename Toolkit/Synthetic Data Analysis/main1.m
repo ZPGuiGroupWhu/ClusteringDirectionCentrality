@@ -6,7 +6,7 @@
 %   k_num: k of KNN
 %   ratio: percentile ratio of internal points (Default: 0.9, Recommended: 0.70~0.95)
 %   The suggested parameter settings for all dataset are as follows:
-%   DS1:[30,0.70]; DS2:[8,0.67]; DS3:[11,0.92]; DS4:[17,0.77]; DS5:[10,0.70]; DS6:[30,0.80];
+%   DS1:[30,0.70]; DS2:[4,0.72]; DS3:[11,0.92]; DS4:[17,0.77]; DS5:[10,0.70]; DS6:[30,0.80];
 %   DS7:[30,0.80]; DS8:[52,0.80]; DS9:[30,0.95]; DS10:[30,0.95]; DS14:[30,0.90]; DS15:[30,0.90];
 %   DS16:[9,0.60]; DS17:[20,0.70];
 k_num = 30;
