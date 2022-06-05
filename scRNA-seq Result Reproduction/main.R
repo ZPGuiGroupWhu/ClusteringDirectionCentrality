@@ -10,4 +10,4 @@ source('RunCDC.R')
 ## 'Best': This mode only runs the algorithm with the best results of each scRNA-seq dataset directly.
 ## 'All': This mode goes through the entire parameter space and can obtain the same results of our paper.
 
-RunCDC('Segerstolpe','All')
+RunCDC('Baron-Mouse','All')
