@@ -39,16 +39,18 @@ Download the code and run the 'main' file in the root directory of each applicat
 This application is implemented using **R** and adopts [Seurat](https://satijalab.org/seurat) pipeline to preprocess the scRNA-seq dataset. It supports '10X' and 'csv' data formats. Before running the code, you can specify the name and format of the scRNA-seq data and determine to read to label file or not. We provide 9 sample datasets in this application. ***To be noted, the sample datasets have been compressed into .zip files due the data size limit of GitHub. Before using them, please decompress them into the corresponding data folders named by the datasets.***
 If you want to test your own datasets, you must name and organize the data files as the description of Data Format in [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Tutorial.pdf). 
 ```ruby
-filename = 'Baron-Mouse
+filename = 'Baron-Mouse'
 format = 'csv'
 labels = '1'
 
 source('BuildSeuratObject.R')
-SeuratData <- BuildSeuratObject(filename, format, labels))
+SeuratData <- BuildSeuratObject(filename, format, labels)
 
 source('SeuratPreprocess.R')
 n_components = 2
-SeuratData <- SeuratPreprocess(SeuratData, filename, n_components)
+n_neighbors = 30
+min_dist = 0.3
+SeuratData <- SeuratPreprocess(SeuratData, filename, n_components, n_neighbors, min_dist)
 
 source('CDC.R')
 k = 30
