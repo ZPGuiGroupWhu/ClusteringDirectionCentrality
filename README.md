@@ -95,6 +95,14 @@ addpath UMAP/umap
 [X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
 ```
 
+> **scRNA-seq Result Reproduction**
+
+This module helps users reproduce the scRNA-seq experiments quickly.
+```ruby
+source('RunCDC.R')
+RunCDC('Baron-Mouse','All')
+```
+
 # Schematic
 
 ![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/pics/workflow.gif)
