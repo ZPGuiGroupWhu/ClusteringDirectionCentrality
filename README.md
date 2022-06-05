@@ -34,7 +34,7 @@ BiocManager::install(c("BiocGenerics", "BiocSingular", "GenomeInfoDb", "GenomicR
 
 Download the code and run the 'main' file in the root directory of each application. Details can be found in the [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Tutorial.pdf).
 
-> **scRNA-seq Cluster**
+> **Toolkit/scRNA-seq Cluster**
 
 This application is implemented using **R** and adopts [Seurat](https://satijalab.org/seurat) pipeline to preprocess the scRNA-seq dataset. It supports '10X' and 'csv' data formats. Before running the code, you can specify the name and format of the scRNA-seq data and determine to read to label file or not. We provide 9 sample datasets in this application. ***To be noted, the sample datasets have been compressed into .zip files due the data size limit of GitHub. Before using them, please decompress them into the corresponding data folders named by the datasets.***
 If you want to test your own datasets, you must name and organize the data files as the description of Data Format in [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Tutorial.pdf). 
@@ -63,7 +63,7 @@ ARI <- mclust::adjustedRandIndex(Idents(SeuratData), SeuratData@meta.data[["Clus
 ```
 
 
-> **Synthetic Data Analysis**
+> **Toolkit/Synthetic Data Analysis**
 
 This application is implemented using **MATLAB** and supports for cluster analysis on synthetic datasets. It contains two main files, ‘main1.m’ and ‘main2.m’. The first handles noise-free datasets, and the second integrates noise elimination methods, LOF, RKNN and IDM. We provide 17 synthetic 2D datasets with different shapes of clusters in this application, where DS10-DS13 contain noise points. These datasets can help users to understand the capabilities of the different clustering algorithms under representative 2D data distributions.
 
