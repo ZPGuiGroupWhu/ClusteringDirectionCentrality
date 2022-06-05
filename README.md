@@ -6,7 +6,7 @@ We propose a novel Clustering algorithm by measuring Direction Centrality (CDC) 
 
 This is a toolkit for CDC cluster analysis on various applications, including ‘scRNA-seq Cluster’, ‘UCI Benchmark Test’, ‘Synthetic Data Analysis’, ‘CyTOF Cluster’, ‘Speaker Recognition’, ‘Face Recognition’. They are implemented using MATLAB, R and Python languages.
 
-We also provide a separated code module to facilitate the reviewers to quickly reproduce our results on all 13 scRNA-seq datasets in 2D UMAP space, which can be executed independently with the developed toolkit. In this module, users don’t need to specify any parameters of preprocessing steps and CDC algorithm, and only the dataset name and type of running mode (“All” and “Best” modes) are required to reproduce the exactly same results presented in our paper.
+We also provide a separated code module named scRNA-seq Result Reproduction to facilitate users to quickly reproduce our results on all 13 scRNA-seq datasets in 2D UMAP space, which can be executed independently with the developed toolkit. In this module, users don’t need to specify any parameters of preprocessing steps and CDC algorithm, and only the dataset name and type of running mode (“All” and “Best” modes) are required to reproduce the exactly same results presented in our paper.
 
 Now, a parallel version of the algorithm CDC in Java is also under developing based on High-Performance Computing (HPC) framework Apache Spark, which is nested under the folder "HPC-version".
 
