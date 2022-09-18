@@ -107,6 +107,10 @@ RunCDC('Baron-Mouse','All')
 
 ![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/pics/workflow.gif)
 
+# Citation Request:
+Peng, D., Gui, Z.*, Wang, D. et al. Clustering by measuring local direction centrality for data with heterogeneous density and weak connectivity. Nat. Commun. 13, 5455 (2022).
+https://www.nature.com/articles/s41467-022-33136-9
+
 # License
 
 This project is covered under the Apache 2.0 License.
