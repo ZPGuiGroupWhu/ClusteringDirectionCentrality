@@ -1,4 +1,4 @@
-![image](https://img.shields.io/badge/R-4.1.0-brightgreen) ![image](https://img.shields.io/badge/MATLAB-R2020b-red) ![image](https://img.shields.io/badge/Python-3.9.1-blue) [![DOI](https://zenodo.org/badge/467575519.svg)](https://zenodo.org/badge/latestdoi/467575519)
+![image](https://img.shields.io/badge/R-4.1.0-brightgreen) ![image](https://img.shields.io/badge/MATLAB-R2020b-red) ![image](https://img.shields.io/badge/Python-3.9.1-blue) ![image](https://img.shields.io/badge/DOI-https%3A%2F%2Fzenodo.org%2Frecord%2F7029720-yellow) 
 # Clustering by measuring local direction centrality for data with heterogeneous density and weak connectivity (CDC)
 
 
