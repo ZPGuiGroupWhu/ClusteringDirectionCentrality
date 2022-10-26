@@ -539,7 +539,26 @@ class TestSetupRequires:
                 foobar_1_dir = os.path.join(temp_dir, 'foo.bar-0.1')
                 os.mkdir(foobar_1_dir)
                 with tarfile.open(foobar_1_archive) as tf:
-                    tf.extractall(foobar_1_dir)
+                    def is_within_directory(directory, target):
+                        
+                        abs_directory = os.path.abspath(directory)
+                        abs_target = os.path.abspath(target)
+                    
+                        prefix = os.path.commonprefix([abs_directory, abs_target])
+                        
+                        return prefix == abs_directory
+                    
+                    def safe_extract(tar, path=".", members=None, *, numeric_owner=False):
+                    
+                        for member in tar.getmembers():
+                            member_path = os.path.join(path, member.name)
+                            if not is_within_directory(path, member_path):
+                                raise Exception("Attempted Path Traversal in Tar File")
+                    
+                        tar.extractall(path, members, numeric_owner=numeric_owner) 
+                        
+                    
+                    safe_extract(tf, foobar_1_dir)
                 sys.path.insert(1, foobar_1_dir)
 
                 dist = PRDistribution(foobar_1_dir, project_name='foo.bar',
