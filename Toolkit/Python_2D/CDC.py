@@ -1,4 +1,4 @@
-def CDC(k_num, T_DCM, X):
+def CDC(k_num, ratio, X):
     from sklearn.neighbors import NearestNeighbors
     import numpy as np
     import math
@@ -41,6 +41,8 @@ def CDC(k_num, T_DCM, X):
 
     angle_var = angle_var / ((k_num - 1) * 4 * pow(math.pi, 2) / pow(k_num, 2))
 
+    sort_dcm = sorted(angle_var)
+    T_DCM = sort_dcm[math.ceil(num*ratio)]
     ind = np.zeros(num)
     for i in range(num):
         if angle_var[i] < T_DCM:
