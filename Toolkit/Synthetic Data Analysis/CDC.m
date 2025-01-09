@@ -51,16 +51,20 @@ if (d==2)
     DCM = DCM/((k_num-1)*4*pi^2/k_num^2);    
 else
     for i=1:n
-        dif_x = X(get_knn(i,:),:) - X(i,:);
-        map_x = inv(diag(sqrt(diag(dif_x*dif_x'))))*dif_x;
-        convex = convhulln(map_x);
-        simplex_num = length(convex(:,1));
-        simplex_vol = zeros(simplex_num,1);
-        for j=1:simplex_num
-            simplex_coord = map_x(convex(j,:),:);
-            simplex_vol(j) = sqrt(det(simplex_coord*simplex_coord'))/gamma(d);
-        end  
-        DCM(i) = var(simplex_vol);
+        try
+            dif_x = X(get_knn(i,:),:) - X(i,:);
+            map_x = inv(diag(sqrt(diag(dif_x*dif_x'))))*dif_x;
+            convex = convhulln(map_x);
+            simplex_num = length(convex(:,1));
+            simplex_vol = zeros(simplex_num,1);
+            for j=1:simplex_num
+                simplex_coord = map_x(convex(j,:),:);
+                simplex_vol(j) = sqrt(max(0,det(simplex_coord*simplex_coord')))/gamma(d-1);
+            end  
+            DCM(i) = var(simplex_vol);
+        catch exception 
+            DCM(i) = 0;
+        end
     end
 end
      
