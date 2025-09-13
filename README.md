@@ -96,13 +96,39 @@ addpath UMAP/umap
 [X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
 ```
 
-> **scRNA-seq Result Reproduction**
+> **Toolkit/Python**
+Install the ```cdc_cluster``` python package from pypi
+```
+pip install cdc_cluster
+```
+After installing the package, you can use the ```cdc_cluster``` function as follows:
+```ruby
+from cdc_cluster import cdc_cluster
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import time
+
+raw_data = pd.read_table('DS1.txt', header=None)
+X = np.array(raw_data)
+[n, d] = X.shape
+data = X[:, :d-1]
+ref = X[:, d-1]
+time_start = time.time()
+res = cdc_cluster(X=data, k_num=30, ratio=0.72)
+time_end = time.time()
+print(time_end-time_start)
+
+plt.scatter(data[:, 0], data[:, 1], c=res, s=10, cmap='hsv', marker='o')
+plt.show()
+```
 
 This module helps users reproduce the scRNA-seq experiments quickly. Users can just run the file ```main.R``` for reproduction without specifying the parameter details, and only the dataset name and type of running mode (```All``` and ```Best``` modes) are required. The names of the supported 13 scRNA-seq datasets have be listed in the code annotation. The module supports two types of mode, i.e., 'Best' and 'All'. 'Best' mode only runs the algorithm with the best parameters of each scRNA-seq dataset directly, so that the users can check the consistence between the obtained results and the best results presented in our paper (Fig.2 and Supplementary Table 2). While, 'All' mode goes through the entire parameter space in Supplementary Note 4 and achieves the exactly same results in Supplementary Table 2 of our paper. 
 ```ruby
 source('RunCDC.R')
 RunCDC('Baron-Mouse','All')
 ```
+> **scRNA-seq Result Reproduction**
 
 # Schematic
 
