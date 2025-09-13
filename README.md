@@ -96,6 +96,16 @@ addpath UMAP/umap
 [X, ~, ~, ~] = run_umap(X, 'n_components', 2, 'min_dist', 0.1, 'n_neighbors', 20);
 ```
 
+
+> **scRNA-seq Result Reproduction**
+
+This module helps users reproduce the scRNA-seq experiments quickly. Users can just run the file ```main.R``` for reproduction without specifying the parameter details, and only the dataset name and type of running mode (```All``` and ```Best``` modes) are required. The names of the supported 13 scRNA-seq datasets have be listed in the code annotation. The module supports two types of mode, i.e., 'Best' and 'All'. 'Best' mode only runs the algorithm with the best parameters of each scRNA-seq dataset directly, so that the users can check the consistence between the obtained results and the best results presented in our paper (Fig.2 and Supplementary Table 2). While, 'All' mode goes through the entire parameter space in Supplementary Note 4 and achieves the exactly same results in Supplementary Table 2 of our paper. 
+```ruby
+source('RunCDC.R')
+RunCDC('Baron-Mouse','All')
+```
+
+
 > **Toolkit/Python**
 
 Install the ```cdc_cluster``` python package from pypi
@@ -123,13 +133,6 @@ print(time_end-time_start)
 plt.scatter(data[:, 0], data[:, 1], c=res, s=10, cmap='hsv', marker='o')
 plt.show()
 ```
-
-This module helps users reproduce the scRNA-seq experiments quickly. Users can just run the file ```main.R``` for reproduction without specifying the parameter details, and only the dataset name and type of running mode (```All``` and ```Best``` modes) are required. The names of the supported 13 scRNA-seq datasets have be listed in the code annotation. The module supports two types of mode, i.e., 'Best' and 'All'. 'Best' mode only runs the algorithm with the best parameters of each scRNA-seq dataset directly, so that the users can check the consistence between the obtained results and the best results presented in our paper (Fig.2 and Supplementary Table 2). While, 'All' mode goes through the entire parameter space in Supplementary Note 4 and achieves the exactly same results in Supplementary Table 2 of our paper. 
-```ruby
-source('RunCDC.R')
-RunCDC('Baron-Mouse','All')
-```
-> **scRNA-seq Result Reproduction**
 
 # Schematic
 
