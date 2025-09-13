@@ -3,13 +3,13 @@
 # Clustering by measuring local direction centrality for data with heterogeneous density and weak connectivity (CDC)
 
 
-We propose a novel Clustering algorithm by measuring Direction Centrality (CDC) locally. It adopts a density-independent metric based on the distribution of K-nearest neighbors (KNNs) to distinguish between internal and boundary points. The boundary points generate enclosed cages to bind the connections of internal points, thereby preventing cross-cluster connections and separating weakly-connected clusters. We present an interactive ***Demo*** and a brief introduction to the algorithm at ***https://zpguigroupwhu.github.io/CDC-Introduction-Website/***. This paper has been published in ***Nature Communications***, and more details can be seen https://www.nature.com/articles/s41467-022-33136-9.
+We propose a novel Clustering algorithm by measuring Direction Centrality (CDC) locally. It adopts a density-independent metric based on the distribution of K-nearest neighbors (KNNs) to distinguish between internal and boundary points. The boundary points generate enclosed cages to bind the connections of internal points, thereby preventing cross-cluster connections and separating weakly-connected clusters. We present an interactive ***Demo*** and a brief introduction to the algorithm at ***https://zpguigroupwhu.github.io/CDC-Introduction-Website/***. The python version of CDC can be found at ***https://github.com/ZPGuiGroupWhu/CDC-pkg*** This paper has been published in ***Nature Communications***, and more details can be seen https://www.nature.com/articles/s41467-022-33136-9.
 
-This is a toolkit for CDC cluster analysis on various applications, including ‘scRNA-seq Cluster’, ‘UCI Benchmark Test’, ‘Synthetic Data Analysis’, ‘CyTOF Cluster’, ‘Speaker Recognition’, ‘Face Recognition’. They are implemented using MATLAB, R and Python languages.
+This is a toolkit for CDC cluster analysis on various applications, including ```scRNA-seq Cluster```, ```UCI Benchmark Test```, ```Synthetic Data Analysis```, ```CyTOF Cluster```, ```Speaker Recognition```, ```Face Recognition```. They are implemented using MATLAB, R and Python languages.
 
-We also provide a separated code module named scRNA-seq Result Reproduction to facilitate users to quickly reproduce our results on all 13 scRNA-seq datasets in 2D UMAP space, which can be executed independently with the developed toolkit. In this module, users don’t need to specify any parameters of preprocessing steps and CDC algorithm, and only the dataset name and type of running mode (“All” and “Best” modes) are required to reproduce the exactly same results presented in our paper.
+We also provide a separated code module named scRNA-seq Result Reproduction to facilitate users to quickly reproduce our results on all 13 scRNA-seq datasets in 2D UMAP space, which can be executed independently with the developed toolkit. In this module, users don’t need to specify any parameters of preprocessing steps and CDC algorithm, and only the dataset name and type of running mode (```All``` and ```Best``` modes) are required to reproduce the exactly same results presented in our paper.
 
-Now, a parallel version of the algorithm CDC in Java is also under developing based on High-Performance Computing (HPC) framework Apache Spark, which is nested under the folder "HPC-version".
+Now, a parallel version of the algorithm CDC in Java is also under developing based on High-Performance Computing (HPC) framework Apache Spark, which is nested under the folder ```HPC-version```.
 
 ![image](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/pics/index1.jpg)
 
@@ -33,11 +33,11 @@ BiocManager::install(c("BiocGenerics", "BiocSingular", "GenomeInfoDb", "GenomicR
 
 # How To Run
 
-Download the code and run the 'main' file in the root directory of each application. Details can be found in the [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Toolkit/Tutorial.pdf).
+Download the code and run the ```main``` file in the root directory of each application. Details can be found in the [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Toolkit/Tutorial.pdf).
 
 > **Toolkit/scRNA-seq Cluster**
 
-This application is implemented using **R** and adopts [Seurat](https://satijalab.org/seurat) pipeline to preprocess the scRNA-seq dataset. It supports '10X' and 'csv' data formats. Before running the code, you can specify the name and format of the scRNA-seq data and determine to read to label file or not. We provide 9 sample datasets in this application. ***To be noted, the sample datasets have been compressed into .zip files due the data size limit of GitHub. Before using them, please decompress them into the corresponding data folders named by the datasets.***
+This application is implemented using **R** and adopts [Seurat](https://satijalab.org/seurat) pipeline to preprocess the scRNA-seq dataset. It supports ```10X``` and ```csv``` data formats. Before running the code, you can specify the name and format of the scRNA-seq data and determine to read to label file or not. We provide 9 sample datasets in this application. ***To be noted, the sample datasets have been compressed into .zip files due the data size limit of GitHub. Before using them, please decompress them into the corresponding data folders named by the datasets.***
 If you want to test your own datasets, you must name and organize the data files as the description of Data Format in [Tutorial](https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Toolkit/Tutorial.pdf). 
 ```ruby
 filename = 'Baron-Mouse'
@@ -66,7 +66,7 @@ ARI <- mclust::adjustedRandIndex(Idents(SeuratData), SeuratData@meta.data[["Clus
 
 > **Toolkit/Synthetic Data Analysis**
 
-This application is implemented using **MATLAB** and supports for cluster analysis on synthetic datasets. It contains two main files, ‘main1.m’ and ‘main2.m’. The first handles noise-free datasets, and the second integrates noise elimination methods, LOF, RKNN and IDM. We provide 17 synthetic 2D datasets with different shapes of clusters in this application, where DS10-DS13 contain noise points. These datasets can help users to understand the capabilities of the different clustering algorithms under representative 2D data distributions.
+This application is implemented using **MATLAB** and supports for cluster analysis on synthetic datasets. It contains two main files, ```main1.m``` and ```main2.m```. The first handles noise-free datasets, and the second integrates noise elimination methods, LOF, RKNN and IDM. We provide 17 synthetic 2D datasets with different shapes of clusters in this application, where DS10-DS13 contain noise points. These datasets can help users to understand the capabilities of the different clustering algorithms under representative 2D data distributions.
 
 ```ruby
 k = 30;
@@ -98,7 +98,7 @@ addpath UMAP/umap
 
 > **scRNA-seq Result Reproduction**
 
-This module helps users reproduce the scRNA-seq experiments quickly. Users can just run the file 'main.R' for reproduction without specifying the parameter details, and only the dataset name and type of running mode (“All” and “Best” modes) are required. The names of the supported 13 scRNA-seq datasets have be listed in the code annotation. The module supports two types of mode, i.e., 'Best' and 'All'. 'Best' mode only runs the algorithm with the best parameters of each scRNA-seq dataset directly, so that the users can check the consistence between the obtained results and the best results presented in our paper (Fig.2 and Supplementary Table 2). While, 'All' mode goes through the entire parameter space in Supplementary Note 4 and achieves the exactly same results in Supplementary Table 2 of our paper. 
+This module helps users reproduce the scRNA-seq experiments quickly. Users can just run the file ```main.R``` for reproduction without specifying the parameter details, and only the dataset name and type of running mode (```All``` and ```Best``` modes) are required. The names of the supported 13 scRNA-seq datasets have be listed in the code annotation. The module supports two types of mode, i.e., 'Best' and 'All'. 'Best' mode only runs the algorithm with the best parameters of each scRNA-seq dataset directly, so that the users can check the consistence between the obtained results and the best results presented in our paper (Fig.2 and Supplementary Table 2). While, 'All' mode goes through the entire parameter space in Supplementary Note 4 and achieves the exactly same results in Supplementary Table 2 of our paper. 
 ```ruby
 source('RunCDC.R')
 RunCDC('Baron-Mouse','All')
