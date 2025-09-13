@@ -97,6 +97,7 @@ addpath UMAP/umap
 ```
 
 > **Toolkit/Python**
+
 Install the ```cdc_cluster``` python package from pypi
 ```
 pip install cdc_cluster
