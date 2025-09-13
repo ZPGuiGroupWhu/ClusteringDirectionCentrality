@@ -110,16 +110,16 @@ RunCDC('Baron-Mouse','All')
 
 Install the ```cdc_cluster``` python package from pypi
 ```
-pip install cdc_cluster
+pip install cdc-cluster
 ```
 After installing the package, you can use the ```cdc_cluster``` function as follows:
 ```ruby
-from cdc_cluster import cdc_cluster
+from cdc import cdc_cluster
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import time
-
+# DS1.txt link: https://github.com/ZPGuiGroupWhu/ClusteringDirectionCentrality/blob/master/Toolkit/Python/DS1.txt
 raw_data = pd.read_table('DS1.txt', header=None)
 X = np.array(raw_data)
 [n, d] = X.shape
